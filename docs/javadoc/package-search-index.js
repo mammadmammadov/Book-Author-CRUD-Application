@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"az.edu.ada.wm2.Assignment"},{"l":"az.edu.ada.wm2.Assignment.config"},{"l":"az.edu.ada.wm2.Assignment.controller"},{"l":"az.edu.ada.wm2.Assignment.data"},{"l":"az.edu.ada.wm2.Assignment.model"},{"l":"az.edu.ada.wm2.Assignment.repository"},{"l":"az.edu.ada.wm2.Assignment.service"}];updateSearchResults();

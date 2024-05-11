@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Book</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa; /* Light shade of blue */
+            margin-top: 50px;
+        }
+
+        .container {
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="card">
+        <div class="card-header bg-primary text-white">
+            <h3 class="text-center">Add New Book</h3>
+        </div>
+        <div class="card-body">
+            <form action="/books/add" method="post" th:object="${book}">
+                <div class="form-group">
+                    <label for="title">Title:</label>
+                    <input type="text" id="title" name="title" class="form-control" th:field="*{title}" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="publicationYear">Publication Year:</label>
+                    <input type="number" id="publicationYear" name="publicationYear" class="form-control"
+                           th:field="*{publicationYear}" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="genre">Genre:</label>
+                    <input type="text" id="genre" name="genre" class="form-control" th:field="*{genre}">
+                </div>
+
+                <div class="form-group">
+                    <label>Authors:</label><br>
+                    <div th:each="author : ${authors}">
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="author" name="authors"
+                                   th:id="${'author' + author.id}" th:value="${author.id}">
+                            <label class="custom-control-label" th:for="${'author' + author.id}"
+                                   th:text="${author.fullName}"></label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="clearfix">
+                    <p class="text-muted small">Can't find the author you want to add?
+                        <a href="/authors/add" target="_blank">Click
+                            here to add a new author</a></p>
+                    <button type="submit" class="btn btn-primary">Add Book</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Author</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+    .container {
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="card-header bg-primary text-white">
+        <h3 class="text-center">Add New Author</h3>
+    </div>
+    <form action="/authors/add" method="post" th:object="${author}">
+        <div class="form-group">
+            <label for="fullName">Full Name:</label>
+            <input type="text" id="fullName" name="fullName" th:field="*{fullName}" class="form-control" required>
+        </div>
+
+        <div class="form-group">
+            <label for="birthYear">Birth Year:</label>
+            <input type="number" id="birthYear" name="birthYear" th:field="*{birthYear}" class="form-control" required>
+        </div>
+
+        <div class="form-group">
+            <label for="nationality">Nationality:</label>
+            <input type="text" id="nationality" name="nationality" th:field="*{nationality}" class="form-control"
+                   required>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Add Author</button>
+    </form>
+</div>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

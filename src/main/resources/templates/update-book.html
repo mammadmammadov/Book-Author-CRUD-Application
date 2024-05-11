@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Book</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <h3 class="text-center">Update Book</h3>
+                </div>
+                <div class="card-body">
+                    <form th:action="@{/books/update/{id}(id=${book.id})}" method="post" th:object="${book}">
+                        <input type="hidden" th:field="*{id}">
+                        <div class="form-group">
+                            <label for="title">Title:</label>
+                            <input type="text" id="title" name="title" class="form-control" th:field="*{title}"
+                                   required>
+                        </div>
+                        <div class="form-group">
+                            <label for="publicationYear">Publication Year:</label>
+                            <input type="number" id="publicationYear" name="publicationYear" class="form-control"
+                                   th:field="*{publicationYear}" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="genre">Genre:</label>
+                            <input type="text" id="genre" name="genre" class="form-control" th:field="*{genre}"
+                                   required>
+                        </div>
+
+                        <!-- Checkbox for authors -->
+                        <div class="form-group">
+                            <label>Authors:</label><br>
+                            <div th:each="author : ${allAuthors}">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="author" name="authors"
+                                           th:value="${author.id}"
+                                           th:checked="${book.authors != null and book.authors.contains(author)}">
+                                    <label class="form-check-label" th:for="${'author_' + author.id}"
+                                           th:text="${author.fullName}"></label>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-muted small">Can't find the author you want to add?
+                            <a href="/authors/add" target="_blank">Click
+                                here to add a new author</a></p>
+
+                        <button type="submit" class="btn btn-primary btn-block">Update Book</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

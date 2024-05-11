@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>List of Authors</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container mt-5">
+    <h3 class="text-center mb-4">List of Authors</h3>
+
+    <form th:action="@{/authors/search}" method="get" class="mb-3">
+        <div class="input-group">
+            <input type="text" id="searchFullName" name="fullName" class="form-control" placeholder="Search by Name">
+            <input type="number" id="searchBirthYear" name="birthYear" class="form-control" placeholder="Birth Year">
+            <select id="searchNationality" name="nationality" class="form-control">
+                <option value="">Select Nationality</option>
+                <!-- Iterate over available nationalities -->
+                <option th:each="nationality : ${nationalities}" th:value="${nationality}"
+                        th:text="${nationality}"></option>
+            </select>
+            <div class="input-group-append">
+                <button type="submit" class="btn btn-primary">Search</button>
+            </div>
+        </div>
+    </form>
+
+
+    <!-- Table -->
+    <table class="table">
+        <thead class="thead-dark">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Birth Year</th>
+            <th>Nationality</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+
+        <tbody>
+
+        <tr th:if="${authors.isEmpty()}">
+            <td colspan="10" class="text">No Authors Found</td>
+        </tr>
+        <!-- Loop through the authors and display them in rows -->
+        <tr th:each="author : ${authors}">
+            <td th:text="${author.id}"></td>
+            <td th:text="${author.fullName}"></td>
+            <td th:text="${author.birthYear}"></td>
+            <td th:text="${author.nationality}"></td>
+            <td>
+                <a th:href="@{'/authors/update/' + ${author.id}}" class="btn btn-info mr-2">Edit</a>
+                <a th:href="@{'/authors/delete/' + ${author.id}}" class="btn btn-danger">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <div th:if="${message}" class="alert alert-info" role="alert">
+        <span th:text="${message}"></span>
+    </div>
+    <a class="btn btn-success" href="/authors/add">Add Author</a>
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            margin: 0;
+            background-image: url('https://images.unsplash.com/photo-1481627834876-b7833e8f5570?q=80&w=1856&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
+            color: white; /* Text color on top of the background image */
+        }
+
+        .container-fluid {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 80vh;
+            overflow: hidden;
+        }
+
+        .btn-lg {
+            padding: 20px 0;
+        }
+
+        .btn:hover {
+            text-decoration: none;
+        }
+
+        @keyframes changeColor {
+            0%   { color: #007bff; }
+            25%  { color: #28a745; }
+            50%  { color: #ffc107; }
+            75%  { color: #dc3545; }
+            100% { color: #007bff; }
+        }
+
+        .welcome-text {
+            animation: changeColor 5s infinite; /* Animating the color change */
+            text-shadow: 3px 3px 5px rgba(0, 0, 0, 1);
+        }
+
+
+    </style>
+</head>
+<body>
+
+<div class="container-fluid mt-5">
+    <div>
+        <h1 class="text-center mb-5 welcome-text">Welcome to Book-Author System!</h1>
+        <div class="row">
+            <div class="col-md-6">
+                <a href="/books" target="_blank" class="btn btn-primary btn-lg btn-block">Books Page</a>
+            </div>
+            <div class="col-md-6">
+                <a href="/authors" target="_blank" class="btn btn-primary btn-lg btn-block">Authors Page</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
