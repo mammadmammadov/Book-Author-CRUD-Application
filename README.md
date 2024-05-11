@@ -29,9 +29,3 @@ To start the CRUD application from Windows command line, follow these steps:
    ```bash
    .\gradlew bootRun
 5. To access the application, enter http://localhost:8080
-
-## Video Recording
-
-<a href="https://www.youtube.com/watch?v=8kghl0UTI2s" target="_blank">Link to Video Recording</a>
-
-
